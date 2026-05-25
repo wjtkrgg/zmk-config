@@ -11,12 +11,6 @@
 
 / {
     macros {
-        ot: ot {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LA(GRAVE)>;
-        };
-
         otq: otq {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -150,7 +144,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &ot1    &ot2    &ot3    &trans  &trans  &trans    &trans  &ot1    &ot2    &ot3    &trans  &trans  &trans
-                        &ot     &otq    &otw    &ote      &ot     &otq    &otw    &ote
+                        &kp LA(GRAVE)  &otq  &otw  &ote      &kp LA(GRAVE)  &otq  &otw  &ote
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
