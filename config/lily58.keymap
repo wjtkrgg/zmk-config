@@ -10,6 +10,50 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        ot: ot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE)>;
+        };
+
+        otq: otq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp Q>;
+        };
+
+        otw: otw {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp W>;
+        };
+
+        ote: ote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp E>;
+        };
+
+        ot1: ot1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp N1>;
+        };
+
+        ot2: ot2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp N2>;
+        };
+
+        ot3: ot3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(GRAVE) &kp N3>;
+        };
+    };
+
     behaviors {
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
@@ -48,10 +92,10 @@
             //                     | UNDO | mo1  | GUI  | SPACE |  |  RET  | mo2  | BSPC | DEL  |
 
             bindings = <
-&kp ESC       &kp LEFT_ARROW    &kp DOWN_ARROW    &kp UP_ARROW      &kp RIGHT_ARROW  &kp BACKSPACE                          &kp C_PLAY_PAUSE  &kp C_AC_FORWARD  &kp C_VOL_DN      &kp C_VOLUME_UP   &kp K_MUTE        &kp GRAVE
+&kp ESC       &kp LEFT_ARROW    &kp DOWN_ARROW    &kp UP_ARROW      &kp RIGHT_ARROW  &kp BACKSPACE                          &kp C_PLAY_PAUSE  &kp C_AC_FORWARD  &kp C_VOL_DN      &kp C_VOLUME_UP   &kp K_MUTE        &mo 3
 &kp TAB       &kp Q             &kp W             &kp E             &kp R            &kp T                                  &kp Y             &kp U             &kp I             &kp O             &kp P             &kp MINUS
 &kp LCTRL     &hml LGUI A       &hml LALT S       &hml LSHFT D      &hml LCTRL F     &kp G                                  &kp H             &hmr RCTRL J      &hmr RSHFT K      &hmr RALT L       &hmr RGUI SEMI    &kp SQT
-&kp LEFT_ALT  &kp Z             &kp X             &kp C             &kp V            &kp B          &kp RET      &kp SPACE  &kp N             &kp M             &kp COMMA         &kp DOT           &kp FSLH          &kp BACKSLASH
+&mo 3          &kp Z             &kp X             &kp C             &kp V            &kp B          &kp RET      &kp SPACE  &kp N             &kp M             &kp COMMA         &kp DOT           &kp FSLH          &kp BACKSLASH
                                                   &kp K_UNDO        &mo 1            &kp LEFT_GUI   &kp SPACE    &kp RET    &mo 2             &kp BSPC          &kp DELETE
             >;
 
@@ -97,12 +141,16 @@
         };
 
         extra_layer_1 {
+            // left thumb (L→R):  Opt+` | Opt+`Q | Opt+`W | Opt+`E
+            // right thumb (L→R): Opt+` | Opt+`Q | Opt+`W | Opt+`E
+            // left bottom row (next to mo3):  Opt+`1 | Opt+`2 | Opt+`3
+            // right bottom row (first three): Opt+`1 | Opt+`2 | Opt+`3
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &ot1    &ot2    &ot3    &trans  &trans  &trans    &trans  &ot1    &ot2    &ot3    &trans  &trans  &trans
+                        &ot     &otq    &otw    &ote      &ot     &otq    &otw    &ote
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
